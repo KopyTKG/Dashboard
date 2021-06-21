@@ -1,0 +1,76 @@
+body {
+  min-height: 100vh;
+  height: 100%;
+}
+
+#root {
+  min-height: 100vh;
+  height: 100%;
+}
+
+.body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  filter: blur(6px);
+  background-image: url("../img/loginBG.jpg");
+  position: absolute;
+}
+
+.body .f-log {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 350pt;
+  border-radius: 5%;
+  height: max-content;
+  background: #282c3c;
+  padding: 40pt 40pt;
+}
+
+.f-log label {
+  width: 100%;
+  margin: 5px 0;
+  color: white;
+}
+
+.f-log input {
+  width: 100%;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.f-log button {
+  width: 100%;
+  height: 40pt;
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 20pt;
+}
+
+.f-log button:hover {
+  opacity: 0.6;
+}
+
+.b-strip {
+  position: relative;
+  margin: auto;
+  height: 100%;
+  width: 500pt;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.link-head .inner {
+  font-weight: 600;
+  color: #282c3c;
+  font-size: 16px;
+  fill: #282c3c;
+}
