@@ -5,19 +5,18 @@ import classNames from "classnames";
 import {
   LogoutIcon,
   CogIcon,
-  UserIcon
+  UserIcon,
+  RefreshIcon
 } from "@heroicons/react/outline"
 
 // reactstrap components
 import {
-  Button,
   Collapse,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
   UncontrolledDropdown,
   Input,
-  InputGroup,
   NavbarBrand,
   Navbar,
   NavLink,
@@ -64,6 +63,10 @@ function AdminNavbar(props) {
   const OnMount = () => {
     Cookies.remove("isLogin");
     window.location.href = "/";
+  }
+
+  const Admin = () => {
+    window.location.href = "/admin";
   }
   return (
     <>
@@ -123,6 +126,14 @@ function AdminNavbar(props) {
                         <CogIcon style={{height: 25}}/>
                         &nbsp;Settings
                       </span>
+                    </DropdownItem>
+                  </NavLink>
+                  <NavLink className="link-head" tag="li">
+                    <DropdownItem className="nav-item ">
+                      <div className="inner" onClick={() => Admin()}>
+                        <RefreshIcon style={{height: 25}}/>
+                        &nbsp;Swap Mode
+                      </div>
                     </DropdownItem>
                   </NavLink>
                   <DropdownItem divider tag="li" />

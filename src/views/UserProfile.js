@@ -30,10 +30,9 @@ function UserProfile() {
                   <Row>
                     <Col className="pr-md-1" md="5">
                       <FormGroup>
-                        <label>Company (disabled)</label>
+                        <label>Company</label>
                         <Input
                           defaultValue="Creative Code Inc."
-                          disabled
                           placeholder="Company"
                           type="text"
                         />
@@ -116,7 +115,7 @@ function UserProfile() {
                     <Col className="pl-md-1" md="4">
                       <FormGroup>
                         <label>Postal Code</label>
-                        <Input placeholder="ZIP Code" type="number" />
+                        <Input placeholder="ZIP Code" type="text" />
                       </FormGroup>
                     </Col>
                   </Row>

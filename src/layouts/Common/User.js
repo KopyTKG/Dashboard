@@ -96,8 +96,8 @@ function User(props) {
             <Sidebar 
               routes={routes}
               logo={{
-                outterLink: "https://www.softex.cz/",
-                text: "Softex",
+                outterLink: "https://thekrew.vercel.app/",
+                text: "The Krew Site",
                 imgSrc: logo,
               }}
               toggleSidebar={toggleSidebar}

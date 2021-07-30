@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import { 
   BrowserRouter, 
   Route, 
-  Switch, 
-  Redirect 
+  Switch,
+  Redirect
 } from "react-router-dom";
 
 import AdminLayout from "layouts/Admin/Admin.js";
@@ -32,7 +32,9 @@ ReactDOM.render(
           <>
           <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
           <Route path="/user" render={(props) => <UserLayout {...props} />} />
-          <Redirect from="/" to="/user" />
+          <Route exact path="/">
+            <Redirect from="/" to="/user" />
+          </Route>
           </>          
           :
             <Route path="/">

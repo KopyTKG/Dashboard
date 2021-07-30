@@ -8,7 +8,7 @@ const Login = () => {
 
     const OnMount = () => {
         Cookies.set("isLogin", true);
-        window.location.href = "/admin"
+        window.location.href = "/user"
     }
 
     return(
@@ -16,7 +16,7 @@ const Login = () => {
             <div className="body">
                 <div className="bg"/>
                 <div className="b-strip">
-                    <form className="f-log" onSubmit={() => OnMount()}>
+                    <form className="f-log" target="/user" onSubmit={() => OnMount()}>
                         <label>
                             Email address
                         </label>
@@ -40,7 +40,7 @@ const Login = () => {
                         </button>
                         <br></br>
                         <br></br>
-                        <a href="#">
+                        <a href="/settings/password">
                         forgot password?
                         </a>
                     </form>

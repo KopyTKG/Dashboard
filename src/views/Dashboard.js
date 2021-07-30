@@ -14,17 +14,9 @@ import {
   CardHeader,
   CardBody,
   CardTitle,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  Label,
-  FormGroup,
-  Input,
   Table,
   Row,
-  Col,
-  UncontrolledTooltip,
+  Col
 } from "reactstrap";
 
 // core components
@@ -172,6 +164,7 @@ function Dashboard(props) {
                 defaultValue = ""
                 title="Update the Documentation"
                 description="Dwuamish Head, Seattle, WA 8:47 AM"
+                date="12.06.2021"
                 />
 
                 <Task
@@ -182,6 +175,7 @@ function Dashboard(props) {
                 protect the personal data and privacy of Europe
                 citizens for transactions that occur within EU
                 member states."
+                date="12.06.2021"
                 />
                 
                 <Task
@@ -190,12 +184,14 @@ function Dashboard(props) {
                 title="Solve the issues"
                 description="Fifty percent of all respondents said they would be
                 more likely to shop at a company"
+                date="12.06.2021"
                 />
                 <Task
                 defaultChecked="a"
                 defaultValue = ""
                 title="Release v2.0.0"
                 description="Ra Ave SW, Seattle, WA 98116, SUA 11:19 AM"
+                date="12.06.2021"
                 />
 
                 <Task
@@ -205,12 +201,14 @@ function Dashboard(props) {
                 description="The report also shows that consumers will not easily
                 forgive a company once a breach exposing their
                 personal data occurs."
+                date="12.06.2021"
                 />
                 <Task
                 defaultChecked="a"
                 defaultValue = ""
                 title="Arival at export process"
                 description="Capitol Hill, Seattle, WA 12:34 AM"
+                date="26.06.2021"
                 />
                 </TaskCard>
           </Col>

@@ -9,9 +9,9 @@ import PerfectScrollbar from "perfect-scrollbar";
 // reactstrap components
 import { Nav, NavLink as ReactstrapNavLink } from "reactstrap";
 import {
-  BackgroundColorContext,
-  backgroundColors,
+  BackgroundColorContext
 } from "contexts/BackgroundColorContext";
+import { GlobeIcon } from "@heroicons/react/outline";
 
 var ps;
 
@@ -36,9 +36,6 @@ function Sidebar(props) {
       }
     };
   });
-  const linkOnClick = () => {
-    document.documentElement.classList.remove("nav-open");
-  };
   const { routes, rtlActive, logo } = props;
   let logoImg = null;
   let logoText = null;
@@ -49,10 +46,11 @@ function Sidebar(props) {
           href={logo.outterLink}
           className="simple-text logo-mini"
           target="_blank"
+          rel="noreferrer"
           onClick={props.toggleSidebar}
         >
           <div className="logo-img">
-            <img src={logo.imgSrc} alt="react-logo" />
+            <GlobeIcon style={{width: 35}} />
           </div>
         </a>
       );
@@ -62,6 +60,7 @@ function Sidebar(props) {
           className="simple-text logo-normal"
           target="_blank"
           onClick={props.toggleSidebar}
+          rel="noreferrer"
         >
           {logo.text}
         </a>
@@ -104,7 +103,7 @@ function Sidebar(props) {
             
             <Nav>
               {routes.map((prop, key) => {
-                if(prop.layout != props.layout) return null;
+                if(prop.layout !== props.layout) return null;
                 if (prop.redirect) return null;
                 return (
                   <li
@@ -119,8 +118,13 @@ function Sidebar(props) {
                       activeClassName="active"
                       onClick={props.toggleSidebar}
                     >
-                      <i className={prop.icon} />
-                      <p>{rtlActive ? prop.rtlName : prop.name}</p>
+                      <span style={{height:5}}>
+                        
+                      </span>
+                      <p>
+                        {prop.icon()} &nbsp;
+                        {rtlActive ? prop.rtlName : prop.name}
+                      </p>
                     </NavLink>
                   </li>
                 );

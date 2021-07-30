@@ -1,66 +1,104 @@
 import Dashboard from "views/Dashboard.js";
 import Icons from "views/Icons.js";
-import Calendar from "views/Calendar.js";
+import CalendarP from "views/Calendar.js";
 import Notifications from "views/Notifications.js";
 import TableList from "views/TableList.js";
 import Typography from "views/Typography.js";
 import UserProfile from "views/UserProfile.js";
-import Login from "views/LoginDemo";
+
+import {
+  CalendarIcon,
+  ChartPieIcon,
+  EmojiHappyIcon,
+  BellIcon,
+  UserIcon,
+  PuzzleIcon,
+  AdjustmentsIcon
+} from '@heroicons/react/outline';
+
+const Calendar = () => {
+  return(
+    <CalendarIcon style={{width: 25}}/>
+  );
+}
+const ChartPie = () => {
+  return(
+    <ChartPieIcon style={{width: 25}}/>
+);
+}
+const EmojiHappy = () => {
+  return(
+    <EmojiHappyIcon style={{width: 25}}/>
+);
+}
+const Bell = () => {
+  return(
+    <BellIcon style={{width: 25}}/>
+);
+}
+const User = () => {
+  return(
+    <UserIcon style={{width: 25}}/>
+);
+}
+const Puzzle = () => {
+  return(
+    <PuzzleIcon style={{width: 25}}/>
+);
+}
+const Adjustments = () => {
+  return(
+    <AdjustmentsIcon style={{width: 25}}/>
+);
+}
 
 var routes = [
-  // {
-  //   path: "/demo",
-  //   name: "Login Page",
-  //   icon: "tim-icons icon-calendar-60",
-  //   component: Login,
-  //   layout: "/user"
-  // },
   {
     path: "/calendar",
     name: "Calendar",
-    icon: "tim-icons icon-calendar-60",
-    component: Calendar,
+    icon: Calendar,
+    component: CalendarP,
     layout: "/admin"
   },
   {
     path: "/dashboard",
     name: "Dashboard",
-    icon: "tim-icons icon-chart-pie-36",
+    icon: ChartPie,
     component: Dashboard,
     layout: "/admin",
   },
   {
     path: "/icons",
     name: "Icons",
-    icon: "tim-icons icon-atom",
+    icon: EmojiHappy,
     component: Icons,
     layout: "/user",
   },
   {
     path: "/notifications",
     name: "Notifications",
-    icon: "tim-icons icon-bell-55",
+    icon: Bell,
     component: Notifications,
     layout: "/admin",
   },
   {
     path: "/user-profile",
     name: "User Profile",
-    icon: "tim-icons icon-single-02",
+    icon: User,
     component: UserProfile,
     layout: "/admin",
   },
   {
     path: "/tables",
     name: "Table List",
-    icon: "tim-icons icon-puzzle-10",
+    icon: Puzzle,
     component: TableList,
     layout: "/admin",
   },
   {
     path: "/typography",
     name: "Typography",
-    icon: "tim-icons icon-align-center",
+    icon: Adjustments,
     component: Typography,
     layout: "/admin",
   },

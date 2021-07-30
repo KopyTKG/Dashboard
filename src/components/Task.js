@@ -1,3 +1,4 @@
+import { PencilIcon } from '@heroicons/react/outline';
 import React from 'react';
 import {
     Button,
@@ -10,6 +11,9 @@ import {
 
 class Task extends React.Component{
     render(){
+        const date = new Date();
+        let Today = date.getDate() + "." +date.getMonth() +"." + date.getFullYear();
+        Today = Today.toString();
         return(
             <tr>
                 <td>
@@ -20,9 +24,7 @@ class Task extends React.Component{
                             defaultValue={this.props.defaultValue}
                             type="checkbox"
                             />
-                            <span className="form-check-sign">
-                            <span className="check" />
-                            </span>
+                            <span className="form-check-sign" />
                         </Label>
                     </FormGroup>
                 </td>
@@ -32,6 +34,11 @@ class Task extends React.Component{
                         {this.props.description}
                     </p>
                 </td>
+                <td>
+                    <p className={"text-neutral"}>
+                        {this.props.date}
+                    </p>
+                </td>
                 <td className="td-actions text-right">
                     <Button
                         color="link"
@@ -39,7 +46,7 @@ class Task extends React.Component{
                         title=""
                         type="button"
                     >
-                        <i className="tim-icons icon-pencil" />
+                        <PencilIcon style={{width: 25}} />
                     </Button>
                     <UncontrolledTooltip
                         delay={0}

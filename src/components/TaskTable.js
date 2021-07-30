@@ -1,22 +1,13 @@
 import React from 'react';
 import {
-    Button,
-    ButtonGroup,
     Card,
     CardHeader,
     CardBody,
-    CardTitle,
     DropdownToggle,
     DropdownMenu,
     DropdownItem,
     UncontrolledDropdown,
-    Label,
-    FormGroup,
-    Input,
-    Table,
-    Row,
-    Col,
-    UncontrolledTooltip,
+    Table
   } from "reactstrap";
   
 
