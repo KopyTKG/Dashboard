@@ -111,7 +111,7 @@ function User(props) {
               />
             <Switch>
               {getRoutes(routes)}
-            <Redirect from="*" to="/user/icons" />
+            <Redirect from="*" to="/user/dashboard" />
           </Switch>
         </div>
       </div>   

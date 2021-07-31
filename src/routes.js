@@ -61,13 +61,6 @@ var routes = [
     component: Dashboard,
     layout: "/user",
   },
-  {
-    path: "/icons",
-    name: "Icons",
-    icon: EmojiHappy,
-    component: Icons,
-    layout: "/user",
-  },
   // Admin layout
   {
     path: "/calendar",

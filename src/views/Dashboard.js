@@ -1,15 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
+
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 import Task from "../components/Task";
 
 import sec from "../json/sec.json"
 import min from "../json/minute.json"
-//import min from "../json/minute.json"
-import data from "../json/buffer.json"
+import data from "../json/hour.json"
 // reactstrap components
 import {
   Button,
@@ -23,19 +23,20 @@ import {
   Col
 } from "reactstrap";
 
-// core components
-import {
-  chartExample1,
-  chartExample2,
-  chartExample4
-} from "variables/charts.js";
+import Security from "../variables/Security";
+import TicTac from "../variables/TicTac";
+import percentage from "../variables/Temp";
+
 import TaskCard from "components/TaskTable";
+import { CircularProgressbar } from "components/CircleGraf";
 
 function Dashboard(props) {
-  const [table, settable] = React.useState("sec");
-  const [display, setdisplay] = React.useState("second");
-  const OnLoad = () => {
-    //console.log(data["temps"]);
+  const [table, settable] = useState("sec");
+  const [display, setdisplay] = useState("second");
+  const OnLoad = () => { 
+    console.log(Security);
+    console.log(TicTac);
+    console.log(percentage);
   }
 
   let MainTableSettings = {
@@ -291,20 +292,83 @@ function Dashboard(props) {
           </Col>
         </Row>
         <Row>
-          <Col lg="4">
+          <Col lg="8">
             <Card className="card-chart">
               <CardHeader>
-                <h5 className="card-category">Total Shipments</h5>
+                <h5 className="card-category">Bot status</h5>
                 <CardTitle tag="h3">
-                  <i className="tim-icons icon-bell-55 text-info" /> 763,215
+                  <i className="tim-icons icon-bell-55 text-info" /> Status display
                 </CardTitle>
               </CardHeader>
               <CardBody>
                 <div className="chart-area">
-                  <Line
-                    data={chartExample2.data}
-                    options={chartExample2.options}
-                  />
+                  <Row>
+                    <Col xs="1" />
+                    <Col>
+                      <CircularProgressbar 
+                      value={100}
+                      text={"Demon"}
+                      styles={
+                          Security === "online" ?
+                          {
+                            path:{stroke:"limegreen", strokeLinecap: "round"},
+                            text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
+                          }
+                          :
+                            Security === "reboot" ?
+                            {
+                              path:{stroke:"yellow", strokeLinecap: "round"},
+                              text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
+                            }
+                            :
+                            {
+                              path:{stroke:"red", strokeLinecap: "round"},
+                              text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
+                            }
+                      }
+                      />
+                    </Col>
+                    <Col xs="1" />
+                    <Col>
+                      <CircularProgressbar 
+                      value={100}
+                      text={"Ghost"}
+                      styles={
+                        TicTac == "online" ?
+                        {
+                          path:{stroke:"limegreen", strokeLinecap: "round"},
+                          text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
+                        }
+                        :
+                          TicTac === "reboot" ?
+                          {
+                            path:{stroke:"yellow", strokeLinecap: "round"},
+                            text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
+                          }
+                          :
+                          {
+                            path:{stroke:"red", strokeLinecap: "round"},
+                            text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
+                          }
+                    }
+                      />
+                    </Col>
+                    <Col xs="1" />
+                    <Col>
+                    <CircularProgressbar 
+                      value={100}
+                      text={"NULL"}
+                      styles={
+                        {
+                          path:{stroke:"white", strokeLinecap: "round"},
+                          text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
+                        }
+                      }
+                      />
+                    </Col>
+                    <Col xs="1" />
+                  </Row>
+
                 </div>
               </CardBody>
             </Card>
@@ -312,23 +376,49 @@ function Dashboard(props) {
           <Col lg="4">
             <Card className="card-chart">
               <CardHeader>
-                <h5 className="card-category">Total Shipments</h5>
+                <h5 className="card-category">Temperature Reading</h5>
                 <CardTitle tag="h3">
-                  <i className="tim-icons icon-bell-55 text-info" /> 763,215
+                  Current Temperature
                 </CardTitle>
               </CardHeader>
               <CardBody>
                 <div className="chart-area">
-                  <Bar
-                    data={chartExample4.data}
-                    options={chartExample4.options}
+                  <Row>
+                    <Col xs="3"/>
+                    <Col>
+                    <div style={{height: 220, width: 220}}>
+
+                      <CircularProgressbar value={percentage} text={`${percentage}°C`} 
+                      styles={
+                          percentage > 50 ?
+                          {
+                              path:{stroke: "red", strokeLinecap: "round"},
+                              text:{  fill: "red", fontSize: "16px", dominantBaseline: "middle", textAnchor: "middle"}
+                          } 
+                          : 
+                              percentage >  40?
+                                  {
+                                      path:{stroke: "orange", strokeLinecap: "round"},
+                                      text:{  fill: "orange", fontSize: "16px", dominantBaseline: "middle", textAnchor: "middle"}
+                                  } 
+                                  :
+                                  {
+                                      path:{stroke: "limegreen", strokeLinecap: "round"},
+                                      text:{  fill: "limegreen", fontSize: "16px", dominantBaseline: "middle", textAnchor: "middle"}
+                                  }
+                          
+                          }
                   />
+                    </div>
+                    </Col>
+                    <Col xs="3"/>
+                  </Row>
                 </div>
               </CardBody>
             </Card>
           </Col>
         </Row>
-        <Row>
+        {/* <Row>
           <Col lg="6" md="12">
               <TaskCard
                 title="Tasks"
@@ -450,7 +540,7 @@ function Dashboard(props) {
               </CardBody>
             </Card>
           </Col>
-        </Row>
+        </Row> */}
       </div>
     </>
   );

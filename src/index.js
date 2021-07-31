@@ -15,6 +15,7 @@ import "assets/css/default.scss";
 import "assets/scss/black-dashboard-react.scss";
 import "assets/demo/demo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import "react-circular-progressbar/dist/styles.css"
 
 import ThemeContextWrapper from "./components/ThemeWrapper/ThemeWrapper";
 import BackgroundColorWrapper from "./components/BackgroundColorWrapper/BackgroundColorWrapper";
