@@ -29,7 +29,6 @@
 
 .rbc-month-view {
   position: relative;
-  border: 1px solid $calendar-border;
   display: flex;
   flex-direction: column;
   flex: 1 0 0;
@@ -65,11 +64,16 @@
   min-width: 0;
   padding-right: 5px;
   text-align: right;
-
+  color: $cell-date-color;
+  
   &.rbc-now {
     font-weight: bold;
+    color: $today-highlight-text;
   }
-
+  &.rbc-off-range {
+    color: $out-of-range-color;
+  }
+  
   > a {
     &,
     &:active,

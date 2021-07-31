@@ -348,6 +348,18 @@
   &[data="green"]{
     @include linear-gradient($success-states, $success);
   }
+  &[data="red"]{
+    @include linear-gradient($danger-states, $danger);
+  }
+  &[data="default"]{
+    @include linear-gradient($default-states, $default);
+  }
+  &[data="black"]{
+    @include linear-gradient($black-states, $black);
+  }
+  &[data="yellow"]{
+    @include linear-gradient($teal, $yellow);
+  }
 
   .user{
     padding-bottom: 20px;

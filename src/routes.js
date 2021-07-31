@@ -77,6 +77,13 @@ var routes = [
     layout: "/admin",
   },
   {
+    path: "/icon",
+    name: "Icons",
+    icon: EmojiHappy,
+    component: Icons,
+    layout: "/admin",
+  },
+  {
     path: "/notifications",
     name: "Notifications",
     icon: Bell,

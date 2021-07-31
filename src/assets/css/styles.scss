@@ -48,14 +48,15 @@
   flex: 1 0 0%;
   text-overflow: ellipsis;
   white-space: nowrap;
+  border-bottom: 1px solid $cell-border;
   padding: 0 3px;
-  text-align: center;
+  text-align: end;
   vertical-align: middle;
-  font-weight: 300;
+  font-weight: bold;
   font-size: 90%;
   min-height: 0;
-  border-bottom: 1px solid $cell-border;
-  color: pink;
+  // border-bottom: 1px solid $cell-border;
+  color: $header-text;
 
   & + & {
     border-left: 1px solid $cell-border;
