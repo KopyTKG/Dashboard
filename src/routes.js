@@ -53,6 +53,22 @@ const Adjustments = () => {
 }
 
 var routes = [
+  // User layout
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    icon: ChartPie,
+    component: Dashboard,
+    layout: "/user",
+  },
+  {
+    path: "/icons",
+    name: "Icons",
+    icon: EmojiHappy,
+    component: Icons,
+    layout: "/user",
+  },
+  // Admin layout
   {
     path: "/calendar",
     name: "Calendar",
@@ -66,13 +82,6 @@ var routes = [
     icon: ChartPie,
     component: Dashboard,
     layout: "/admin",
-  },
-  {
-    path: "/icons",
-    name: "Icons",
-    icon: EmojiHappy,
-    component: Icons,
-    layout: "/user",
   },
   {
     path: "/notifications",

@@ -24,8 +24,8 @@ let chart1_2_options = {
       {
         barPercentage: 1.6,
         gridLines: {
-          drawBorder: false,
-          color: "rgba(29,140,248,0.0)",
+          drawBorder: true,
+          color: "rgba(255,140,248,0.0)",
           zeroLineColor: "transparent",
         },
         ticks: {
@@ -40,8 +40,8 @@ let chart1_2_options = {
       {
         barPercentage: 1.6,
         gridLines: {
-          drawBorder: false,
-          color: "rgba(29,140,248,0.1)",
+          drawBorder: true,
+          color: "rgba(255,140,248,0.1)",
           zeroLineColor: "transparent",
         },
         ticks: {

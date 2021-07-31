@@ -4,7 +4,7 @@ import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 import PerfectScrollbar from "perfect-scrollbar";
 
 // core components
-import AdminNavbar from "components/Navbars/AdminNavbar.js";
+import CommonNavbar from "components/Navbars/CommonNavbar.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 
 import routes from "routes.js";
@@ -104,7 +104,7 @@ function User(props) {
               layout="/user"
             />
             <div className="main-panel" ref={mainPanelRef}>
-              <AdminNavbar
+              <CommonNavbar
                 brandText={getBrandText(location.pathname)}
                 toggleSidebar={toggleSidebar}
                 sidebarOpened={sidebarOpened}

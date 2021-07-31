@@ -120,26 +120,10 @@ function AdminNavbar(props) {
                 </DropdownToggle>
                 <DropdownMenu className="dropdown-navbar" right tag="ul">
                   <NavLink className="link-head" tag="li">
-                    <DropdownItem className="nav-item">
-                      <span className="inner">
-                        <UserIcon style={{height:25}}/>
-                        &nbsp;Profile
-                      </span>
-                    </DropdownItem>
-                  </NavLink>
-                  <NavLink className="link-head" tag="li">
-                    <DropdownItem className="nav-item ">
-                      <span className="inner">
-                        <CogIcon style={{height: 25}}/>
-                        &nbsp;Settings
-                      </span>
-                    </DropdownItem>
-                  </NavLink>
-                  <NavLink className="link-head" tag="li">
                     <DropdownItem className="nav-item ">
                       <div className="inner" onClick={() => Admin()}>
                         <RefreshIcon style={{height: 25}}/>
-                        &nbsp;User Mode
+                        &nbsp;Sudo Mode
                       </div>
                     </DropdownItem>
                   </NavLink>

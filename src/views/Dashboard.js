@@ -6,6 +6,10 @@ import { Line, Bar } from "react-chartjs-2";
 
 import Task from "../components/Task";
 
+import sec from "../json/sec.json"
+import min from "../json/minute.json"
+//import min from "../json/minute.json"
+import data from "../json/buffer.json"
 // reactstrap components
 import {
   Button,
@@ -28,12 +32,183 @@ import {
 import TaskCard from "components/TaskTable";
 
 function Dashboard(props) {
-  const [bigChartData, setbigChartData] = React.useState("data1");
-  const setBgChartData = (name) => {
-    setbigChartData(name);
+  const [table, settable] = React.useState("sec");
+  const [display, setdisplay] = React.useState("second");
+  const OnLoad = () => {
+    //console.log(data["temps"]);
+  }
+
+  let MainTableSettings = {
+    maintainAspectRatio: false,
+    legend: {
+      display: false,
+    },
+    tooltips: {
+      backgroundColor: "#f5f5f5",
+      titleFontColor: "#333",
+      bodyFontColor: "#666",
+      bodySpacing: 4,
+      xPadding: 12,
+      mode: "nearest",
+      intersect: 0,
+      position: "nearest",
+    },
+    responsive: true,
+    scales: {
+      yAxes: [
+        {
+          barPercentage: 1.6,
+          gridLines: {
+            drawBorder: true,
+            color: "rgba(255,140,248,0.0)",
+            zeroLineColor: "transparent",
+          },
+          ticks: {
+            suggestedMin: 60,
+            suggestedMax: 125,
+            padding: 20,
+            fontColor: "#9a9a9a",
+          },
+        },
+      ],
+      xAxes: [
+        {
+          barPercentage: 1.6,
+          gridLines: {
+            drawBorder: true,
+            color: "rgba(255,140,248,0.1)",
+            zeroLineColor: "transparent",
+          },
+          ticks: {
+            padding: 20,
+            fontColor: "#9a9a9a",
+          },
+        },
+      ],
+    },
+  };
+
+  let MainTable = {
+    sec: (canvas) => {
+      let ctx = canvas.getContext("2d");
+      let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+      gradientStroke.addColorStop(1, "rgba(29,140,248,0.2)");
+      gradientStroke.addColorStop(0.4, "rgba(29,140,248,0.0)");
+      gradientStroke.addColorStop(0, "rgba(29,140,248,0)");
+      let dump = {
+        labels: [],
+        datasets: [
+          {
+            label: "Seconds Table",
+            /* Display underline color */
+            fill: true,
+            /* Underline color */
+            backgroundColor: gradientStroke,
+            /* Line color */
+            borderColor: "#1f8ef1",
+            /* Line width */
+            borderWidth: 1,
+            borderDash: [],
+            borderDashOffset: 0.0,
+            /* Point color */
+            pointBackgroundColor: "#1f8ef1",
+            pointBorderColor: "rgba(50,255,255,0)",
+            pointHoverBackgroundColor: "#1f8ef1",
+            pointBorderWidth: 20,
+            pointHoverRadius: 4,
+            pointHoverBorderWidth: 15,
+            pointRadius: 4,
+            data: [],
+          },
+        ],
+      };
+      dump["labels"] = sec["labels"]
+      dump["datasets"][0]["data"] = sec["temps"]
+      console.log(dump["datasets"][0]["data"])
+      return dump;
+    },
+    min: (canvas) => {
+      let ctx = canvas.getContext("2d");
+      let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+      gradientStroke.addColorStop(1, "rgba(29,140,248,0.2)");
+      gradientStroke.addColorStop(0.4, "rgba(29,140,248,0.0)");
+      gradientStroke.addColorStop(0, "rgba(29,140,248,0)");
+      let dump = {
+        labels: [],
+        datasets: [
+          {
+            label: "Seconds Table",
+            /* Display underline color */
+            fill: true,
+            /* Underline color */
+            backgroundColor: gradientStroke,
+            /* Line color */
+            borderColor: "#1f8ef1",
+            /* Line width */
+            borderWidth: 1,
+            borderDash: [],
+            borderDashOffset: 0.0,
+            /* Point color */
+            pointBackgroundColor: "#1f8ef1",
+            pointBorderColor: "rgba(50,255,255,0)",
+            pointHoverBackgroundColor: "#1f8ef1",
+            pointBorderWidth: 20,
+            pointHoverRadius: 4,
+            pointHoverBorderWidth: 15,
+            pointRadius: 4,
+            data: [],
+          },
+        ],
+      };
+      dump["labels"] = min["labels"]
+      dump["datasets"][0]["data"] = min["temps"]
+      console.log(dump["datasets"][0]["data"])
+      return dump;
+    },
+    hour: (canvas) => {
+      let ctx = canvas.getContext("2d");
+      let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+      gradientStroke.addColorStop(1, "rgba(29,140,248,0.2)");
+      gradientStroke.addColorStop(0.4, "rgba(29,140,248,0.0)");
+      gradientStroke.addColorStop(0, "rgba(29,140,248,0)");
+      let dump = {
+        labels: [],
+        datasets: [
+          {
+            label: "Hour Table",
+            /* Display underline color */
+            fill: true,
+            /* Underline color */
+            backgroundColor: gradientStroke,
+            /* Line color */
+            borderColor: "#1f8ef1",
+            /* Line width */
+            borderWidth: 1,
+            borderDash: [],
+            borderDashOffset: 0.0,
+            /* Point color */
+            pointBackgroundColor: "#1f8ef1",
+            pointBorderColor: "rgba(50,255,255,0)",
+            pointHoverBackgroundColor: "#1f8ef1",
+            pointBorderWidth: 20,
+            pointHoverRadius: 4,
+            pointHoverBorderWidth: 15,
+            pointRadius: 4,
+            data: [],
+          },
+        ],
+      };
+      dump["labels"] = data["labels"]
+      dump["datasets"][0]["data"] = data["temps"]
+      console.log(dump["datasets"][0]["data"])
+      return dump;
+    }
   };
   return (
     <>
+      {
+        OnLoad()
+      }
       <div className="content">
         <Row>
           <Col xs="12">
@@ -41,8 +216,8 @@ function Dashboard(props) {
               <CardHeader>
                 <Row>
                   <Col className="text-left" sm="6">
-                    <h5 className="card-category">Total Shipments</h5>
-                    <CardTitle tag="h2">Performance</CardTitle>
+                    <h5 className="card-category">Temperature reading</h5>
+                    <CardTitle tag="h2">Temperature per {display}</CardTitle>
                   </Col>
                   <Col sm="6">
                     <ButtonGroup
@@ -52,35 +227,35 @@ function Dashboard(props) {
                       <Button
                         tag="label"
                         className={classNames("btn-simple", {
-                          active: bigChartData === "data1",
+                          active: table === "sec",
                         })}
                         color="info"
                         id="0"
                         size="sm"
-                        onClick={() => setBgChartData("data1")}
+                        onClick={() => {settable("sec"); setdisplay("minute")}}
                       >
                         <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                          Accounts
+                          Seconds
                         </span>
                         <span className="d-block d-sm-none">
                           <i className="tim-icons icon-single-02" />
                         </span>
                       </Button>
                       <Button
+                        tag="label"
+                        className={classNames("btn-simple", {
+                          active: table === "min",
+                        })}
                         color="info"
                         id="1"
                         size="sm"
-                        tag="label"
-                        className={classNames("btn-simple", {
-                          active: bigChartData === "data2",
-                        })}
-                        onClick={() => setBgChartData("data2")}
+                        onClick={() => {settable("min"); setdisplay("hour")}}
                       >
                         <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                          Purchases
+                          Minutes
                         </span>
                         <span className="d-block d-sm-none">
-                          <i className="tim-icons icon-gift-2" />
+                          <i className="tim-icons icon-single-02" />
                         </span>
                       </Button>
                       <Button
@@ -89,15 +264,15 @@ function Dashboard(props) {
                         size="sm"
                         tag="label"
                         className={classNames("btn-simple", {
-                          active: bigChartData === "data3",
+                          active: table === "hour",
                         })}
-                        onClick={() => setBgChartData("data3")}
+                        onClick={() => {settable("hour"); setdisplay("day")}}
                       >
                         <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                          Sessions
+                          Hour
                         </span>
                         <span className="d-block d-sm-none">
-                          <i className="tim-icons icon-tap-02" />
+                          <i className="tim-icons icon-gift-2" />
                         </span>
                       </Button>
                     </ButtonGroup>
@@ -107,8 +282,8 @@ function Dashboard(props) {
               <CardBody>
                 <div className="chart-area">
                   <Line
-                    data={chartExample1[bigChartData]}
-                    options={chartExample1.options}
+                    data={MainTable[table]}
+                    options={MainTableSettings}
                   />
                 </div>
               </CardBody>
