@@ -15,8 +15,9 @@ $time-selection-color: white !default;
 $time-selection-bg-color: rgba(0, 0, 0, 0.5) !default;
 $date-selection-bg-color: rgba(0, 0, 0, 0.1) !default;
 
-$event-bg: #344675 !default;
-$event-border: darken(#344675, 10%) !default;
+$event-bg: $danger !default;
+$event-bg-image: linear-gradient(15deg,$danger-states, $danger) !default; 
+$event-border:#344675 !default;
 $event-outline: #344675 !default;
 $event-color: #fff !default;
 $event-border-radius: 5px !default;
@@ -40,4 +41,4 @@ $cell-date-color: #fff;
 $header-text: hsla(0, 0%, 100%, 0.4)!default;
 $main-date: rgba(255, 255, 255, 0.6) !default;
 $header-btn-bg: #3358f4 !default;
-$header-btn-bg-image: linear-gradient(20deg,$danger-states, $danger)!default;
+$header-btn-bg-image:linear-gradient(15deg,$danger-states, $danger) !default; 

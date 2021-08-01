@@ -25,14 +25,19 @@ const Calendar = () => {
             end: new Date(2021, 6,19),
         }
     ]
+    const TimeElapsed = Date.now();
+    const Today = new Date(TimeElapsed);
     const ColoredDateCellWrapper = ({ children }) =>
     React.cloneElement(React.Children.only(children), {
         style: {
-        backgroundColor: 'lightblue',
+        backgroundColor: 'transparent',
         },
     })
     return(
         <>
+        {
+            console.log(Today)
+        }
             <div className="content">
                 <Row>
                     <Col xs="12">
@@ -47,7 +52,7 @@ const Calendar = () => {
                                 events={myEventsList}
                                 step={60}
                                 showMultiDayTimes
-                                defaultDate={new Date(2021,6,17)}
+                                defaultDate={Today}
                                 components={{
                                     timeSlotWrapper: ColoredDateCellWrapper,
                                 }}

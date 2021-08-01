@@ -106,15 +106,15 @@ function Dashboard(props) {
             /* Underline color */
             backgroundColor: gradientStroke,
             /* Line color */
-            borderColor: "#1f8ef1",
+            borderColor: "#fd5d93",
             /* Line width */
             borderWidth: 1,
             borderDash: [],
             borderDashOffset: 0.0,
             /* Point color */
-            pointBackgroundColor: "#1f8ef1",
+            pointBackgroundColor: "#fd5d93",
             pointBorderColor: "rgba(50,255,255,0)",
-            pointHoverBackgroundColor: "#1f8ef1",
+            pointHoverBackgroundColor: "#fd5d93",
             pointBorderWidth: 20,
             pointHoverRadius: 4,
             pointHoverBorderWidth: 15,
@@ -144,15 +144,15 @@ function Dashboard(props) {
             /* Underline color */
             backgroundColor: gradientStroke,
             /* Line color */
-            borderColor: "#1f8ef1",
+            borderColor: "#00f2c3",
             /* Line width */
             borderWidth: 1,
             borderDash: [],
             borderDashOffset: 0.0,
             /* Point color */
-            pointBackgroundColor: "#1f8ef1",
+            pointBackgroundColor: "#00f2c3",
             pointBorderColor: "rgba(50,255,255,0)",
-            pointHoverBackgroundColor: "#1f8ef1",
+            pointHoverBackgroundColor: "#00f2c3",
             pointBorderWidth: 20,
             pointHoverRadius: 4,
             pointHoverBorderWidth: 15,
@@ -182,15 +182,15 @@ function Dashboard(props) {
             /* Underline color */
             backgroundColor: gradientStroke,
             /* Line color */
-            borderColor: "#1f8ef1",
+            borderColor: "#ff8d72",
             /* Line width */
             borderWidth: 1,
             borderDash: [],
             borderDashOffset: 0.0,
             /* Point color */
-            pointBackgroundColor: "#1f8ef1",
+            pointBackgroundColor: "#ff8d72",
             pointBorderColor: "rgba(50,255,255,0)",
-            pointHoverBackgroundColor: "#1f8ef1",
+            pointHoverBackgroundColor: "#ff8d72",
             pointBorderWidth: 20,
             pointHoverRadius: 4,
             pointHoverBorderWidth: 15,
@@ -217,12 +217,12 @@ function Dashboard(props) {
               <CardHeader>
                 <Row>
                   <Col className="text-left" sm="6">
-                    <h5 className="card-category">Temperature reading</h5>
+                    <h5 className="card-category">Temperature reading    |    date: {sec["date"]}</h5>
                     <CardTitle tag="h2">Temperature per {display}</CardTitle>
                   </Col>
                   <Col sm="6">
                     <ButtonGroup
-                      className="btn-group-toggle float-right"
+                      className="btn-group-toggle float-right rbc-btn-group"
                       data-toggle="buttons"
                     >
                       <Button
@@ -230,7 +230,7 @@ function Dashboard(props) {
                         className={classNames("btn-simple", {
                           active: table === "sec",
                         })}
-                        color="info"
+                        color="danger"
                         id="0"
                         size="sm"
                         onClick={() => {settable("sec"); setdisplay("minute")}}
@@ -247,7 +247,7 @@ function Dashboard(props) {
                         className={classNames("btn-simple", {
                           active: table === "min",
                         })}
-                        color="info"
+                        color="success"
                         id="1"
                         size="sm"
                         onClick={() => {settable("min"); setdisplay("hour")}}
@@ -260,7 +260,7 @@ function Dashboard(props) {
                         </span>
                       </Button>
                       <Button
-                        color="info"
+                        color="warning"
                         id="2"
                         size="sm"
                         tag="label"

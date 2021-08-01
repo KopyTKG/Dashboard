@@ -61,6 +61,13 @@ var routes = [
     component: Dashboard,
     layout: "/user",
   },
+  {
+    path: "/calendar",
+    name: "Calendar",
+    icon: Calendar,
+    component: CalendarP,
+    layout: "/user"
+  },
   // Admin layout
   {
     path: "/calendar",
