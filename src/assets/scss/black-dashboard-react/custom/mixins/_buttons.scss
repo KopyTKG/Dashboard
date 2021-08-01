@@ -18,7 +18,7 @@
     &.active:hover
      {
         background-color: $btn-states-color !important;
-        background-image: linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
+        background-image: linear-gradient(20deg,$btn-states-color, $btn-color) !important;
         background-image: -webkit-linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
         background-image: -o-linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
         background-image: -moz-linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
@@ -145,7 +145,10 @@
         color: $btn-color;
         border-color: $btn-color;
         background: $transparent-bg;
-
+        &:hover {
+            margin-top: -2px;
+            margin-bottom: 2px;
+        }
         &:hover,
         &:focus,
         &:active,
@@ -165,7 +168,7 @@
           &:not(:disabled):not(.disabled):active{
               color: $white;
               border-color: $btn-color;
-              background-image: linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
+              background-image: linear-gradient(20deg, $btn-states-color, $btn-color) !important;
               background-image: -webkit-linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
               background-image: -o-linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
               background-image: -moz-linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
