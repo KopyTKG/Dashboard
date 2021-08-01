@@ -1,0 +1,208 @@
+
+// Global settings
+
+$enable-caret:              true !default;
+$enable-rounded:            true !default;
+$enable-shadows:            true !default;
+$enable-gradients:          false !default;
+$enable-transitions:        true !default;
+$enable-grid-classes:       true !default;
+$enable-print-styles:       true !default;
+
+
+// Color system
+
+$white:    #ffffff !default;
+$gray-100: #f6f9fc !default;
+$gray-200: #e9ecef !default;
+$gray-300: #e3e3e3 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;   // Line footer color
+$gray-700: #525f7f !default;   // Line p color
+$gray-800: #32325d !default;   // Line heading color
+$gray-900: #212529 !default;
+$link-disabled:              #666666 !default;
+$transparent-bg:             transparent !default;
+$light-bg:                   #f5f6fa !default;
+$dark-background:            #555555 !default;
+
+
+$grays: () !default;
+$grays: map-merge((
+  "100": $gray-100,
+  "200": $gray-200,
+  "300": $gray-300,
+  "400": $gray-400,
+  "500": $gray-500,
+  "600": $gray-600,
+  "700": $gray-700,
+  "800": $gray-800,
+  "900": $gray-900
+), $grays);
+
+$blue:    #5e72e4 !default;
+$indigo:  #5603ad !default;
+$purple:  #8965e0 !default;
+$pink:    #f3a4b5 !default;
+$red:     #f5365c !default;
+$orange:  #fb6340 !default;
+$yellow:  #ffd600 !default;
+$green:   #2dce89 !default;
+$teal:    #11cdef !default;
+$cyan:    #2bffc6 !default;
+
+$line-height-lg:              1.625rem !default;
+$line-height-sm:              1.5 !default;
+$line-height:                 1.35em         !default;
+
+
+$opacity-gray-3:             rgba(222,222,222, .3) !default;
+$opacity-gray-5:             rgba(222,222,222, .5) !default;
+$opacity-gray-8:             rgba(222,222,222, .8) !default;
+
+
+$opacity-5:                  rgba(255,255,255, .5) !default;
+$opacity-6:                  rgba(255,255,255, .6) !default;
+$opacity-8:                  rgba(255,255,255, .8) !default;
+
+
+
+$opacity-1:                  rgba(255,255,255, .1) !default;
+$opacity-2:                  rgba(255,255,255, .2) !default;
+
+
+// end beniamin
+
+$colors: () !default;
+$colors: map-merge((
+  "blue":       $blue,
+  "indigo":     $indigo,
+  "purple":     $purple,
+  "pink":       $pink,
+  "red":        $red,
+  "orange":     $orange,
+  "yellow":     $yellow,
+  "green":      $green,
+  "teal":       $teal,
+  "cyan":       $cyan,
+  "white":      $white,
+  "gray":       $gray-600,
+  "light":      $gray-400,
+  "lighter":    $gray-200,
+  "gray-dark":  $gray-800
+), $colors);
+
+$default-color-opacity:      rgba(182, 182, 182, .6) !default;
+$orange-color:               #f96332 !default;
+
+$default:       #344675 !default;
+$primary:       #e14eca !default;
+$secondary:     #f4f5f7 !default;
+$success:       #00f2c3 !default;
+$info:          #1d8cf8 !default;
+$warning:       #ff8d72 !default;
+$danger:        #fd5d93 !default;
+$black:         #222a42 !default;
+
+
+// gradient
+$default-states:       #263148 !default;
+$primary-states:       #ba54f5 !default;
+$success-states:       #0098f0 !default;
+$info-states:          #3358f4 !default;
+$warning-states:       #ff6491 !default;
+$danger-states:        #ec250d !default;
+$black-states:         #1d253b !default;
+
+$background-black:           #1e1e2f !default;
+$background-states-black:    #1e1e24 !default;
+
+// opacity
+$default-opacity:      rgba(182, 182, 182, .6) !default;
+$primary-opacity:      rgba(249, 99, 50, .3) !default;
+$success-opacity:      rgba(24, 206, 15, .3) !default;
+$info-opacity:         rgba(44, 168, 255, .3) !default;
+$warning-opacity:      rgba(255, 178, 54, .3) !default;
+$danger-opacity:       rgba(255, 54, 54, .3) !default;
+
+$light-gray:                 #E3E3E3 !default;
+$medium-gray:                #DDDDDD !default;
+$dark-gray:                  #9A9A9A !default;
+$card-stats-gray:            #808080 !default;
+$active-gray:                #777777 !default;
+$nav-gray:                   #444444 !default;
+$search-gray:                #b7b7b7 !default;
+$calendar-gray:              #9499a7 !default;
+$active-blue:                #00bbff !default;
+
+
+
+$light:         $gray-500 !default;
+$dark:          $gray-900 !default;
+$darker:        darken($gray-900, 15%) !default;
+
+$facebook:              #3b5998 !default;
+$facebook-states:       darken($facebook, 5%) !default;
+$twitter:               #55acee !default;
+$twitter-states:        darken($twitter, 5%) !default;
+$google-plus:           #dd4b39 !default;
+$google-plus-states:    darken($google-plus, 5%) !default;
+$instagram:             #125688 !default;
+$instagram-states:      lighten($instagram, 6%) !default;
+$linkedin:              #0077B5 !default;
+$linkedin-states:       darken($linkedin, 5%) !default;
+$pinterest:             #cc2127 !default;
+$pinterest-states:      lighten($pinterest, 6%) !default;
+$youtube:               #e52d27 !default;
+$youtube-states:        lighten($youtube, 6%) !default;
+$dribbble:              #ea4c89 !default;
+$dribbble-states:       lighten($dribbble, 6%) !default;
+$github:                #333333 !default;
+$github-states:         #ccc !default;
+$reddit:                #ff4500 !default;
+$reddit-states:         lighten($reddit, 6%) !default;
+$tumblr:                #35465c !default;
+$tumblr-states:         lighten($tumblr, 6%) !default;
+$behance:               #1769ff !default;
+$behance-states:        lighten($behance, 6%) !default;
+
+$theme-colors: () !default;
+$theme-colors: map-merge((
+  "default":      $default,
+  "primary":      $primary,
+  "secondary":    $secondary,
+  "success":      $success,
+  "info":         $info,
+  "warning":      $warning,
+  "danger":       $danger,
+  "white":        $white,
+  "neutral":      $white,
+  "dark":         $dark,
+  "darker":       $darker
+), $theme-colors);
+
+$brand-colors: () !default;
+$brand-colors: map-merge((
+  "facebook":     $facebook,
+  "twitter":      $twitter,
+  "google-plus":  $google-plus,
+  "instagram":    $instagram,
+  "pinterest":    $pinterest,
+  "youtube":      $youtube,
+  "dribbble":     $dribbble,
+  "github":       $github,
+  "reddit":       $reddit,
+  "behance":      $behance,
+  "tumblr":       $tumblr,
+  "linkedin":     $linkedin,
+), $brand-colors);
+
+
+/*     brand Colors              */
+$brand-primary:              $primary !default;
+$brand-info:                 $info !default;
+$brand-success:              $success !default;
+$brand-warning:              $warning !default;
+$brand-danger:               $danger !default;
+$brand-inverse:              $black !default;
