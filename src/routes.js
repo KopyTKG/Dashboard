@@ -5,6 +5,7 @@ import Notifications from "views/Notifications.js";
 import TableList from "views/TableList.js";
 import Typography from "views/Typography.js";
 import UserProfile from "views/UserProfile.js";
+import Todo from "views/Todo.js";
 
 import {
   CalendarIcon,
@@ -13,7 +14,8 @@ import {
   BellIcon,
   UserIcon,
   PuzzleIcon,
-  AdjustmentsIcon
+  AdjustmentsIcon,
+  BookmarkIcon
 } from '@heroicons/react/outline';
 
 const Calendar = () => {
@@ -51,6 +53,11 @@ const Adjustments = () => {
     <AdjustmentsIcon style={{width: 25}}/>
 );
 }
+const BookMark = () => {
+  return(
+    <BookmarkIcon style={{width: 25}}/>
+);
+}
 
 var routes = [
   // User layout
@@ -68,6 +75,13 @@ var routes = [
     component: CalendarP,
     layout: "/user"
   },
+  {
+    path: "/todo",
+    name: "Todo",
+    icon: BookMark,
+    component: Todo,
+    layout: "/user"
+  },
   // Admin layout
   {
     path: "/calendar",
@@ -82,6 +96,13 @@ var routes = [
     icon: ChartPie,
     component: Dashboard,
     layout: "/admin",
+  },
+  {
+    path: "/todo",
+    name: "Todo",
+    icon: BookMark,
+    component: Todo,
+    layout: "/admin"
   },
   {
     path: "/icon",

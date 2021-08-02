@@ -33,11 +33,16 @@ import { CircularProgressbar } from "components/CircleGraf";
 function Dashboard(props) {
   const [table, settable] = useState("sec");
   const [display, setdisplay] = useState("second");
-  const OnLoad = () => { 
-    console.log(Security);
-    console.log(TicTac);
-    console.log(percentage);
-  }
+  
+  function OnLoad() { 
+    fetch('http://10.25.0.5:5454/', {
+      'method': 'GET'
+    })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+    })
+  };
 
   let MainTableSettings = {
     maintainAspectRatio: false,
@@ -125,7 +130,6 @@ function Dashboard(props) {
       };
       dump["labels"] = sec["labels"]
       dump["datasets"][0]["data"] = sec["temps"]
-      console.log(dump["datasets"][0]["data"])
       return dump;
     },
     min: (canvas) => {
@@ -205,11 +209,12 @@ function Dashboard(props) {
       return dump;
     }
   };
+
   return (
     <>
-      {
-        OnLoad()
-      }
+    {
+      //OnLoad()
+    }
       <div className="content">
         <Row>
           <Col xs="12">
@@ -292,88 +297,7 @@ function Dashboard(props) {
           </Col>
         </Row>
         <Row>
-          <Col lg="8">
-            <Card className="card-chart">
-              <CardHeader>
-                <h5 className="card-category">Bot status</h5>
-                <CardTitle tag="h3">
-                  <i className="tim-icons icon-bell-55 text-info" /> Status display
-                </CardTitle>
-              </CardHeader>
-              <CardBody>
-                <div className="chart-area">
-                  <Row>
-                    <Col xs="1" />
-                    <Col>
-                      <CircularProgressbar 
-                      value={100}
-                      text={"Demon"}
-                      styles={
-                          Security === "online" ?
-                          {
-                            path:{stroke:"limegreen", strokeLinecap: "round"},
-                            text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
-                          }
-                          :
-                            Security === "reboot" ?
-                            {
-                              path:{stroke:"yellow", strokeLinecap: "round"},
-                              text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
-                            }
-                            :
-                            {
-                              path:{stroke:"red", strokeLinecap: "round"},
-                              text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
-                            }
-                      }
-                      />
-                    </Col>
-                    <Col xs="1" />
-                    <Col>
-                      <CircularProgressbar 
-                      value={100}
-                      text={"Ghost"}
-                      styles={
-                        TicTac == "online" ?
-                        {
-                          path:{stroke:"limegreen", strokeLinecap: "round"},
-                          text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
-                        }
-                        :
-                          TicTac === "reboot" ?
-                          {
-                            path:{stroke:"yellow", strokeLinecap: "round"},
-                            text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
-                          }
-                          :
-                          {
-                            path:{stroke:"red", strokeLinecap: "round"},
-                            text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
-                          }
-                    }
-                      />
-                    </Col>
-                    <Col xs="1" />
-                    <Col>
-                    <CircularProgressbar 
-                      value={100}
-                      text={"NULL"}
-                      styles={
-                        {
-                          path:{stroke:"white", strokeLinecap: "round"},
-                          text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
-                        }
-                      }
-                      />
-                    </Col>
-                    <Col xs="1" />
-                  </Row>
-
-                </div>
-              </CardBody>
-            </Card>
-          </Col>
-          <Col lg="4">
+        <Col lg="4" md="5">
             <Card className="card-chart">
               <CardHeader>
                 <h5 className="card-category">Temperature Reading</h5>
@@ -384,8 +308,8 @@ function Dashboard(props) {
               <CardBody>
                 <div className="chart-area">
                   <Row>
-                    <Col xs="3"/>
-                    <Col>
+                    <Col xs="12">
+                      <center>
                     <div style={{height: 220, width: 220}}>
 
                       <CircularProgressbar value={percentage} text={`${percentage}°C`} 
@@ -410,137 +334,87 @@ function Dashboard(props) {
                           }
                   />
                     </div>
+                    </center>
                     </Col>
-                    <Col xs="3"/>
                   </Row>
                 </div>
               </CardBody>
             </Card>
           </Col>
-        </Row>
-        {/* <Row>
           <Col lg="6" md="12">
-              <TaskCard
-                title="Tasks"
-                subtitle="Today"
-              >
-                <Task
-                defaultChecked="a"
-                defaultValue = ""
-                title="Update the Documentation"
-                description="Dwuamish Head, Seattle, WA 8:47 AM"
-                date="12.06.2021"
-                />
-
-                <Task
-                defaultChecked="a"
-                defaultValue = ""
-                title="GDPR Compliance"
-                description="The GDPR is a regulation that requires businesses to
-                protect the personal data and privacy of Europe
-                citizens for transactions that occur within EU
-                member states."
-                date="12.06.2021"
-                />
-                
-                <Task
-                defaultChecked="a"
-                defaultValue = ""
-                title="Solve the issues"
-                description="Fifty percent of all respondents said they would be
-                more likely to shop at a company"
-                date="12.06.2021"
-                />
-                <Task
-                defaultChecked="a"
-                defaultValue = ""
-                title="Release v2.0.0"
-                description="Ra Ave SW, Seattle, WA 98116, SUA 11:19 AM"
-                date="12.06.2021"
-                />
-
-                <Task
-                defaultChecked="a"
-                defaultValue = ""
-                title="Export the processed files"
-                description="The report also shows that consumers will not easily
-                forgive a company once a breach exposing their
-                personal data occurs."
-                date="12.06.2021"
-                />
-                <Task
-                defaultChecked="a"
-                defaultValue = ""
-                title="Arival at export process"
-                description="Capitol Hill, Seattle, WA 12:34 AM"
-                date="26.06.2021"
-                />
-                </TaskCard>
-          </Col>
-          <Col lg="6" md="12">
-            <Card>
+            <Card className="card-chart">
               <CardHeader>
-                <CardTitle tag="h4">Simple Table</CardTitle>
+                <h5 className="card-category">Bot status</h5>
+                <CardTitle tag="h3">
+                  <i className="tim-icons icon-bell-55 text-info" /> Status display
+                </CardTitle>
               </CardHeader>
               <CardBody>
-                <Table className="tablesorter" responsive>
-                  <thead className="text-primary">
-                    <tr>
-                      <th>Name</th>
-                      <th>Country</th>
-                      <th>City</th>
-                      <th className="text-center">Salary</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Dakota Rice</td>
-                      <td>Niger</td>
-                      <td>Oud-Turnhout</td>
-                      <td className="text-center">$36,738</td>
-                    </tr>
-                    <tr>
-                      <td>Minerva Hooper</td>
-                      <td>Curaçao</td>
-                      <td>Sinaai-Waas</td>
-                      <td className="text-center">$23,789</td>
-                    </tr>
-                    <tr>
-                      <td>Sage Rodriguez</td>
-                      <td>Netherlands</td>
-                      <td>Baileux</td>
-                      <td className="text-center">$56,142</td>
-                    </tr>
-                    <tr>
-                      <td>Philip Chaney</td>
-                      <td>Korea, South</td>
-                      <td>Overland Park</td>
-                      <td className="text-center">$38,735</td>
-                    </tr>
-                    <tr>
-                      <td>Doris Greene</td>
-                      <td>Malawi</td>
-                      <td>Feldkirchen in Kärnten</td>
-                      <td className="text-center">$63,542</td>
-                    </tr>
-                    <tr>
-                      <td>Mason Porter</td>
-                      <td>Chile</td>
-                      <td>Gloucester</td>
-                      <td className="text-center">$78,615</td>
-                    </tr>
-                    <tr>
-                      <td>Jon Porter</td>
-                      <td>Portugal</td>
-                      <td>Gloucester</td>
-                      <td className="text-center">$98,615</td>
-                    </tr>
-                  </tbody>
-                </Table>
+                <div className="chart-area">
+                  <Row>
+                    <Col>
+                    <center>
+                    <div style={{height: 220, width: 220}}>
+                      <CircularProgressbar 
+                      value={100}
+                      text={"Demon"}
+                      styles={
+                          Security === "online" ?
+                          {
+                            path:{stroke:"limegreen", strokeLinecap: "round"},
+                            text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
+                          }
+                          :
+                            Security === "reboot" ?
+                            {
+                              path:{stroke:"yellow", strokeLinecap: "round"},
+                              text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
+                            }
+                            :
+                            {
+                              path:{stroke:"red", strokeLinecap: "round"},
+                              text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
+                            }
+                      }
+                      />
+                      </div>
+                      </center>
+                    </Col>
+                    <Col>
+                      <center>
+                      <div style={{height: 220, width: 220}}>
+                        <CircularProgressbar 
+                        value={100}
+                        text={"Ghost"}
+                        styles={
+                          TicTac == "online" ?
+                          {
+                            path:{stroke:"limegreen", strokeLinecap: "round"},
+                            text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
+                          }
+                          :
+                            TicTac === "reboot" ?
+                            {
+                              path:{stroke:"yellow", strokeLinecap: "round"},
+                              text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
+                            }
+                            :
+                            {
+                              path:{stroke:"red", strokeLinecap: "round"},
+                              text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}
+                            }
+                        }
+                        />
+                      </div>
+                      </center>
+                    </Col>
+                  </Row>
+
+                </div>
               </CardBody>
             </Card>
           </Col>
-        </Row> */}
+        </Row>
       </div>
     </>
   );
