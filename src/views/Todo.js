@@ -23,73 +23,25 @@ import { ReceiptTaxIcon } from "@heroicons/react/outline";
 
 function Todo(props) {
   
+  const [list, setList] = useState(null);
+
   function OnLoad() { 
-    fetch('http://10.25.0.5:5454/', {
+    fetch('http://10.25.0.5:5454/getList', {
       'method': 'GET'
     })
     .then(res => res.json())
     .then(res => {
-      console.log(res);
+      setList(res)
     })
   };
-  let DummyData = [
-      {
-        defaultChecked: "y",
-        defaultValue: "",
-        title: "Test",
-        description: "Testing dummy data",
-        date: "30.6.2021"
-      },
-      {
-        defaultChecked :"a",
-        defaultValue : "",
-        title:"Update the Documentation",
-        description:"Dwuamish Head, Seattle, WA 8:47 AM",
-        date:"12.06.2021"
-        },
-
-        {
-        defaultChecked:"a",
-        defaultValue : "",
-        title:"GDPR Compliance",
-        description:"The GDPR is a regulation that requires businesses to protect the personal data and privacy of Europe citizens for transactions that occur within EU member states.",
-        date:"12.06.2021"
-        },
-        
-        {
-        defaultChecked:"a",
-        defaultValue : "",
-        title:"Solve the issues",
-        description:"Fifty percent of all respondents said they would be more likely to shop at a company",
-        date:"12.06.2021"
-        },
-        {
-        defaultChecked:"a",
-        defaultValue : "",
-        title:"Release v2.0.0",
-        description:"Ra Ave SW, Seattle, WA 98116, SUA 11:19 AM",
-        date:"12.06.2021"
-        },
-
-        {
-        defaultChecked:"a",
-        defaultValue : "",
-        title:"Export the processed files",
-        description:"The report also shows that consumers will not easily forgive a company once a breach exposing their personal data occurs.",
-        date:"12.06.2021"
-        },
-        {
-        defaultChecked:"a",
-        defaultValue : "",
-        title:"Arival at export process",
-        description:"Capitol Hill, Seattle, WA 12:34 AM",
-        date:"26.06.2021"
-        },
-
-  ]
 
   return (
     <>
+    {
+      list == null ?
+      OnLoad() :
+      null
+    }
       <div className="content">
         <Row>
           <Col lg="12" md="12">
@@ -98,11 +50,11 @@ function Todo(props) {
                 subtitle="Today"
               >
                   {
-                     DummyData && DummyData.map((data, index) => {
+                     list && list.map((data, index) => {
                          return(
                              <>
                                 <Task 
-                                    id={index}
+                                    key={index}
                                     defaultChecked={data["defaultChecked"]}
                                     defaultValue={data["defaultValue"]}
                                     title={data["title"]}

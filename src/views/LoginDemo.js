@@ -7,7 +7,16 @@ import "../components/FloatingLabel/FloatingLabel.css"
 const Login = () => {
 
     const OnMount = () => {
+
+        /*
+            Cookies
+        */
         Cookies.set("isLogin", true);
+
+
+        /*
+            Redirect
+        */
         window.location.href = "/user"
     }
 

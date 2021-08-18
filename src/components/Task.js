@@ -46,7 +46,7 @@ class Task extends React.Component{
                         title=""
                         type="button"
                     >
-                        <PencilIcon style={{width: 25}} />
+                        <PencilIcon style={{width: 25, color: "rgb(115,115,115)"}} />
                     </Button>
                     <UncontrolledTooltip
                         delay={0}
