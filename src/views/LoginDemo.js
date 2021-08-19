@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import axios from "axios";
 import FloatingLabel from "components/FloatingLabel/FloatingLabel";
 import Cookies from "js-cookie";
 import "../assets/css/default.scss";
@@ -7,39 +5,36 @@ import "../assets/css/default.scss";
 import "../components/FloatingLabel/FloatingLabel.css"
 
 const Login = () => {
-    async function OnMount() {
+    const OnMount = () => {
         let username = document.getElementById("username").value;
         let password = document.getElementById("password").value;
 
-        let result = await fetch('http://10.25.0.5:5454/login', {
+        fetch('http://10.25.0.5:5454/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'user': username, 'pass': password}
         })
-        let res = await result.json();
-        console.log(res);
-        alert("hey");
-    
-    // empty dependency array means this effect will only run once (like componentDidMount in classes)
-        }
-    
-        
-        // const body = ;
-        // axios.post("", {body})
-        // .then(res => {
-            
-        //   console.log(res);
-        //   alert("hey");
-        // })
-        // Cookies.set("isLogin", true);
-        // window.location.href = "/user"
-    //}
-
+        .then(res => res.json())
+        .then(res => {
+            console.log(res);
+            if(res.success) {
+                Cookies.set("isLoggedIN", true);
+                Cookies.set("token", res.token);
+                setTimeout(() => {
+                    window.location.href = "/user";
+                }, 500);
+            }
+        })
+    }
     return(
         <>
+            {
+                window.location.href.split("/")[3] != "?#" ? window.location.href = "/?#"
+                : null
+            }
             <div className="body">
                 <div className="bg"/>
                 <div className="b-strip">
-                    <form className="f-log" target="/user" onSubmit={() => OnMount()}>
+                    <form className="f-log" action="#" onSubmit={() => OnMount()}>
                         <label>
                             Email address
                         </label>
