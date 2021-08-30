@@ -1,3 +1,19 @@
+## [1.2.1] 2021-09-30
+### Bug fixing
+- Token function
+- CircleGraf.js removed console warning
+- CommonNavbar.js removed console warning
+### Major style changes
+### Deleted components
+### Changed components
+- index.js → remove isLoggedIN cookie
+- LoginDemo.js → remove isLoggedIN cookie
+- Todo.js,Task.js, Tasktable.js → added check logic
+### Added components
+### Deleted dependencies
+### Added dependencies
+### Updated dependencies
+
 ## [1.2.0] 2020-12-11
 ### Bug fixing
 - Added hooks support

@@ -4,8 +4,6 @@ import classNames from "classnames";
 
 import {
   LogoutIcon,
-  CogIcon,
-  UserIcon,
   RefreshIcon
 } from "@heroicons/react/outline"
 
@@ -26,9 +24,8 @@ import {
   NavbarToggler,
   ModalHeader,
 } from "reactstrap";
-import Cookies from "js-cookie";
 
-function AdminNavbar(props) {
+const AdminNavbar = ({brandText, toggleSidebar, sidebarOpened, Logout}) => {
   const [collapseOpen, setcollapseOpen] = React.useState(false);
   const [modalSearch, setmodalSearch] = React.useState(false);
   const [color, setcolor] = React.useState("navbar-transparent");
@@ -60,11 +57,6 @@ function AdminNavbar(props) {
   const toggleModalSearch = () => {
     setmodalSearch(!modalSearch);
   };
-  const OnMount = () => {
-    Cookies.remove("isLogin");
-    window.location.href = "/";
-  }
-
   const Admin = () => {
 
     let parameters = window.location.href;
@@ -82,17 +74,17 @@ function AdminNavbar(props) {
           <div className="navbar-wrapper">
             <div
               className={classNames("navbar-toggle d-inline", {
-                toggled: props.sidebarOpened,
+                toggled: sidebarOpened,
               })}
             >
-              <NavbarToggler onClick={props.toggleSidebar}>
+              <NavbarToggler onClick={toggleSidebar}>
                 <span className="navbar-toggler-bar bar1" />
                 <span className="navbar-toggler-bar bar2" />
                 <span className="navbar-toggler-bar bar3" />
               </NavbarToggler>
             </div>
             <NavbarBrand href="#pablo" onClick={(e) => e.preventDefault()}>
-              {props.brandText}
+              {brandText}
             </NavbarBrand>
           </div>
           <NavbarToggler onClick={toggleCollapse}>
@@ -130,7 +122,7 @@ function AdminNavbar(props) {
                   <DropdownItem divider tag="li" />
                   <NavLink className="link-head" tag="li">
                     <DropdownItem className="nav-item">
-                      <div className="inner"  onClick={() => OnMount()}>
+                      <div className="inner"  onClick={() => Logout()}>
                         <LogoutIcon style={{height: 25}}/>
                         &nbsp;Log out
                       </div>

@@ -13,7 +13,7 @@ import logo from "assets/img/icon.png";
 
 var ps;
 
-function Admin(props) {
+const Admin = ({Logout}) => {
   const location = useLocation();
   const mainPanelRef = React.useRef(null);
   const [sidebarOpened, setsidebarOpened] = React.useState(
@@ -108,6 +108,7 @@ function Admin(props) {
                 brandText={getBrandText(location.pathname)}
                 toggleSidebar={toggleSidebar}
                 sidebarOpened={sidebarOpened}
+                Logout={() => Logout()}
               />
             <Switch>
               {getRoutes(routes)}

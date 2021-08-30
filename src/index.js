@@ -23,16 +23,21 @@ import BackgroundColorWrapper from "./components/BackgroundColorWrapper/Backgrou
 
 import Cookies from "js-cookie";
 
+const Logout =() =>{
+  Cookies.remove("token");
+  window.location.href = "/";
+}
+
 ReactDOM.render(
   <ThemeContextWrapper>
     <BackgroundColorWrapper>
       <BrowserRouter>
       {/* Root view */}
          <Switch>
-          { Cookies.get("isLogin") ? 
+          { Cookies.get("token") ? 
           <>
-          <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-          <Route path="/user" render={(props) => <UserLayout {...props} />} />
+          <Route path="/admin" render={(props) => <AdminLayout Logout={Logout}/>} />
+          <Route path="/user" render={(props) => <UserLayout Logout={Logout}/>} />
           <Route exact path="/">
             <Redirect from="/" to="/user" />
           </Route>

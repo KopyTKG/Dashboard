@@ -9,34 +9,31 @@ import {
   } from "reactstrap";
   
 
-class Task extends React.Component{
-    render(){
-        const date = new Date();
-        let Today = date.getDate() + "." +date.getMonth() +"." + date.getFullYear();
-        Today = Today.toString();
+const Task = (props) => {
         return(
             <tr>
                 <td>
                     <FormGroup check>
                         <Label check>
                             <Input
-                            defaultChecked={this.props.defaultChecked}
-                            defaultValue={this.props.defaultValue}
+                            defaultChecked={props.defaultChecked}
+                            defaultValue={props.defaultValue}
                             type="checkbox"
+                            onClick={props.onCheck}
                             />
                             <span className="form-check-sign" />
                         </Label>
                     </FormGroup>
                 </td>
                 <td>
-                    <p className="title">{this.props.title}</p>
+                    <p className="title">{props.title}</p>
                     <p className="text-muted">
-                        {this.props.description}
+                        {props.description}
                     </p>
                 </td>
                 <td>
                     <p className={"text-neutral"}>
-                        {this.props.date}
+                        {props.date}
                     </p>
                 </td>
                 <td className="td-actions text-right">
@@ -45,8 +42,9 @@ class Task extends React.Component{
                         id="tooltip636901683"
                         title=""
                         type="button"
+                        onClick={props.onEdit}
                     >
-                        <PencilIcon style={{width: 25}} />
+                        <PencilIcon style={{width: 25, color: "rgb(115,115,115)"}} />
                     </Button>
                     <UncontrolledTooltip
                         delay={0}
@@ -59,6 +57,6 @@ class Task extends React.Component{
             </tr>
         );
     }
-}
+
 
 export default Task;

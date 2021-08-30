@@ -20,11 +20,13 @@
 .rbc-show-more {
   @extend .rbc-ellipsis;
   background-color: rgba(255, 255, 255, 0.3);
+  background-image: linear-gradient(20deg, $success-states, $success);
   z-index: $event-zindex;
-  font-weight: bold;
+  color: #fff;
   font-size: 85%;
   height: auto;
   line-height: normal;
+  
 }
 
 .rbc-month-view {

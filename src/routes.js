@@ -18,44 +18,46 @@ import {
   BookmarkIcon
 } from '@heroicons/react/outline';
 
+const width = 30;
+
 const Calendar = () => {
   return(
-    <CalendarIcon style={{width: 25}}/>
+    <CalendarIcon style={{width: width}}/>
   );
 }
 const ChartPie = () => {
   return(
-    <ChartPieIcon style={{width: 25}}/>
+    <ChartPieIcon style={{width: width}}/>
 );
 }
 const EmojiHappy = () => {
   return(
-    <EmojiHappyIcon style={{width: 25}}/>
+    <EmojiHappyIcon style={{width: width}}/>
 );
 }
 const Bell = () => {
   return(
-    <BellIcon style={{width: 25}}/>
+    <BellIcon style={{width: width}}/>
 );
 }
 const User = () => {
   return(
-    <UserIcon style={{width: 25}}/>
+    <UserIcon style={{width: width}}/>
 );
 }
 const Puzzle = () => {
   return(
-    <PuzzleIcon style={{width: 25}}/>
+    <PuzzleIcon style={{width: width}}/>
 );
 }
 const Adjustments = () => {
   return(
-    <AdjustmentsIcon style={{width: 25}}/>
+    <AdjustmentsIcon style={{width: width}}/>
 );
 }
 const BookMark = () => {
   return(
-    <BookmarkIcon style={{width: 25}}/>
+    <BookmarkIcon style={{width: width}}/>
 );
 }
 

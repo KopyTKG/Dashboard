@@ -5,8 +5,6 @@ import classNames from "classnames";
 // react plugin used to create charts
 import { Line } from "react-chartjs-2";
 
-import Task from "../components/Task";
-
 import sec from "../json/sec.json"
 import min from "../json/minute.json"
 import data from "../json/hour.json"
@@ -18,7 +16,6 @@ import {
   CardHeader,
   CardBody,
   CardTitle,
-  Table,
   Row,
   Col
 } from "reactstrap";
@@ -27,23 +24,12 @@ import Security from "../variables/Security";
 import TicTac from "../variables/TicTac";
 import percentage from "../variables/Temp";
 
-import TaskCard from "components/TaskTable";
 import { CircularProgressbar } from "components/CircleGraf";
 
 function Dashboard(props) {
   const [table, settable] = useState("sec");
   const [display, setdisplay] = useState("second");
   
-  function OnLoad() { 
-    fetch('http://10.25.0.5:5454/', {
-      'method': 'GET'
-    })
-    .then(res => res.json())
-    .then(res => {
-      console.log(res);
-    })
-  };
-
   let MainTableSettings = {
     maintainAspectRatio: false,
     legend: {
