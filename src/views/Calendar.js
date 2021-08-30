@@ -13,6 +13,7 @@ import
 from "reactstrap";
 
 import "../assets/css/styles.scss"
+import Cookies from "js-cookie";
 
 
 const Calendar = () => {
@@ -22,12 +23,17 @@ const Calendar = () => {
 
     function OnLoad() { 
         fetch('http://10.25.0.5:5454/getCalendar', {
-          'method': 'GET'
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'token': Cookies.get("token")}
         })
         .then(res => res.json())
         .then(res => {
-        console.log(res)
-          setList(res)
+            if(res[0].error != 404)
+                setList(res)
+            else {
+                Cookies.remove("token");
+                window.location.href = "/";
+            } 
         })
       };
 

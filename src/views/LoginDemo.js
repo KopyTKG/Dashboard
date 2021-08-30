@@ -17,7 +17,6 @@ const Login = () => {
         .then(res => {
             console.log(res);
             if(res.success) {
-                Cookies.set("isLoggedIN", true);
                 Cookies.set("token", res.token);
                 setTimeout(() => {
                     window.location.href = "/user";

@@ -1,3 +1,4 @@
+import { CollectionIcon, PlusIcon, TrashIcon } from '@heroicons/react/outline';
 import React from 'react';
 import {
     Card,
@@ -10,6 +11,9 @@ import {
     Table
   } from "reactstrap";
   
+
+const SVGwidth = 25;
+const spanStyle = {stroke: "black", color: "black"};
 
 class TaskCard extends React.Component{
     render(){
@@ -33,28 +37,34 @@ class TaskCard extends React.Component{
                       href="#pablo"
                       onClick={(e) => e.preventDefault()}
                     >
-                      Action
+                      <span
+                       style= {spanStyle}
+                      >
+                        <PlusIcon style={{width: SVGwidth}}/> &nbsp;Add task
+                      </span>
                     </DropdownItem>
                     <DropdownItem
                       href="#pablo"
                       onClick={(e) => e.preventDefault()}
                     >
-                      Another action
+                      <span
+                       style= {spanStyle}
+                      >
+                        <TrashIcon  style={{width: SVGwidth}}/> &nbsp;Remove task
+                      </span>
                     </DropdownItem>
                     <DropdownItem
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
+                      onClick={this.props.onShowAll}
                     >
-                      Something else
+                      <span
+                       style= {spanStyle}
+                      >
+                        <CollectionIcon  style={{width: SVGwidth}}/> &nbsp;Show all tasks
+                      </span>
                     </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
               </CardHeader>
-{/*                                                     
-
-                Task body 
-
-*/}
               <CardBody>
                 <div className="table-full-width table-responsive">
                   <Table>

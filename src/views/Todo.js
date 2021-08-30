@@ -1,139 +1,101 @@
 import React, {useState} from "react";
 
-// nodejs library that concatenates classes
-import classNames from "classnames";
-
 import Task from "../components/Task";
 
 // reactstrap components
 import {
-  Button,
-  ButtonGroup,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  Table,
   Row,
   Col
 } from "reactstrap";
 
-import TaskCard from "components/TaskTable";
-import { ReceiptTaxIcon } from "@heroicons/react/outline";
+import TaskTable from "components/TaskTable";
+import Cookies from "js-cookie";
 
 function Todo(props) {
   
   const [list, setList] = useState(null);
 
-  function OnLoad() { 
+  function GetList(type) { 
     fetch('http://10.25.0.5:5454/getList', {
-      'method': 'GET'
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'token': Cookies.get("token"), 'type': type}
     })
     .then(res => res.json())
     .then(res => {
-      setList(res)
+      if(res[0].error != 404) {
+        console.log(res);
+        setTimeout(() => 
+        {
+          setList(res);
+        }, 500)
+      }
+      else {
+        Cookies.remove("token");
+        window.location.href = "/";
+      } 
     })
   };
 
+  function OnCheck(id, status) {
+    fetch('http://10.25.0.5:5454/updateTask', {
+      method: 'POST',
+      headers: 
+      { 
+        'Content-Type': 'application/json',
+        'token': Cookies.get("token"),
+        'type': "check",
+        'id': id,
+        'status': status
+      }
+    })
+    .then(res => res.json())
+    .then(res => {
+        window.location.reload();
+        // window.location.href = "/";
+      })
+  };
+
   return (
+    list == null ? 
     <>
-    {
-      list == null ?
-      OnLoad() :
-      null
-    }
+      {
+        list == null ?
+        GetList("null") :
+        null
+      }
+      Loading page please wait.
+    </>
+    :
+    <>
       <div className="content">
         <Row>
           <Col lg="12" md="12">
-              <TaskCard
+              <TaskTable
                 title="Tasks"
                 subtitle="Today"
+                onShowAll={() => {GetList("all")}}
               >
                   {
                      list && list.map((data, index) => {
                          return(
                              <>
                                 <Task 
-                                    key={index}
+                                    key={index + data["defaultValue"]}
                                     defaultChecked={data["defaultChecked"]}
                                     defaultValue={data["defaultValue"]}
                                     title={data["title"]}
                                     description={data["description"]}
                                     date={data["date"]}
+                                    onCheck={() => {OnCheck(data["sql"], data["defaultChecked"])}}
+                                    onEdit={()=> {alert(data["sql"])}}
                                 />
                              </>
                          )
                      })
                   }
-                </TaskCard>
+                </TaskTable>
           </Col>
           </Row>
-          {/*
-          <Row>
-          <Col lg="12" md="12">
-            <Card>
-              <CardHeader>
-                <CardTitle tag="h4">Simple Table</CardTitle>
-              </CardHeader>
-              <CardBody>
-                <Table className="tablesorter" responsive>
-                  <thead className="text-primary">
-                    <tr>
-                      <th>Name</th>
-                      <th>Country</th>
-                      <th>City</th>
-                      <th className="text-center">Salary</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Dakota Rice</td>
-                      <td>Niger</td>
-                      <td>Oud-Turnhout</td>
-                      <td className="text-center">$36,738</td>
-                    </tr>
-                    <tr>
-                      <td>Minerva Hooper</td>
-                      <td>Curaçao</td>
-                      <td>Sinaai-Waas</td>
-                      <td className="text-center">$23,789</td>
-                    </tr>
-                    <tr>
-                      <td>Sage Rodriguez</td>
-                      <td>Netherlands</td>
-                      <td>Baileux</td>
-                      <td className="text-center">$56,142</td>
-                    </tr>
-                    <tr>
-                      <td>Philip Chaney</td>
-                      <td>Korea, South</td>
-                      <td>Overland Park</td>
-                      <td className="text-center">$38,735</td>
-                    </tr>
-                    <tr>
-                      <td>Doris Greene</td>
-                      <td>Malawi</td>
-                      <td>Feldkirchen in Kärnten</td>
-                      <td className="text-center">$63,542</td>
-                    </tr>
-                    <tr>
-                      <td>Mason Porter</td>
-                      <td>Chile</td>
-                      <td>Gloucester</td>
-                      <td className="text-center">$78,615</td>
-                    </tr>
-                    <tr>
-                      <td>Jon Porter</td>
-                      <td>Portugal</td>
-                      <td>Gloucester</td>
-                      <td className="text-center">$98,615</td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </CardBody>
-            </Card>
-          </Col>
-          </Row>*/}
       </div>
     </>
   );

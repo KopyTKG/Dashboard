@@ -4,8 +4,6 @@ import classNames from "classnames";
 
 import {
   LogoutIcon,
-  CogIcon,
-  UserIcon,
   RefreshIcon
 } from "@heroicons/react/outline"
 
@@ -26,7 +24,6 @@ import {
   NavbarToggler,
   ModalHeader,
 } from "reactstrap";
-import Cookies from "js-cookie";
 
 const AdminNavbar = ({brandText, toggleSidebar, sidebarOpened, Logout}) => {
   const [collapseOpen, setcollapseOpen] = React.useState(false);
@@ -60,11 +57,6 @@ const AdminNavbar = ({brandText, toggleSidebar, sidebarOpened, Logout}) => {
   const toggleModalSearch = () => {
     setmodalSearch(!modalSearch);
   };
-  const OnMount = () => {
-    Cookies.remove("isLoggedIN");
-    window.location.href = "/";
-  }
-
   const Admin = () => {
 
     let parameters = window.location.href;

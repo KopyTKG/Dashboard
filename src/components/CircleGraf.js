@@ -118,7 +118,7 @@ function getDashStyle(_a) {
 var CircularProgressbar = (function (_super) {
     __extends(CircularProgressbar, _super);
     function CircularProgressbar() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        return _super !== (null && _super.apply(this, arguments)) || this;
     }
     CircularProgressbar.prototype.getBackgroundPadding = function () {
         if (!this.props.background) {
