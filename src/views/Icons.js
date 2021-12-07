@@ -18,7 +18,7 @@ function Icons() {
                 </p>
               </CardHeader>
               <CardBody className="all-icons">
-                <iframe src="https://heroicons.com/" title="Icons" className="max"/>
+                <iframe src="https://heroicons.com/" title="Icons" className="max" width="100%" height="725wh"/>
               </CardBody>
             </Card>
           </Col>

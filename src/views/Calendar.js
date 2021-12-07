@@ -8,7 +8,8 @@ import
     Col,
     CardHeader,
     CardBody,
-    Card
+    Card,
+    NavbarText
 }
 from "reactstrap";
 
@@ -24,9 +25,16 @@ const Calendar = () => {
     function OnLoad() { 
         fetch('http://10.25.0.5:5454/getCalendar', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'token': Cookies.get("token")}
+            headers: 
+            { 
+                'Content-Type': 'application/json', 
+                'token': "Bearer "+Cookies.get("token")
+            }
         })
-        .then(res => res.json())
+        .then(res => {
+            if(!res.ok) throw new Error(res.status);
+            else return res.json();
+        })
         .then(res => {
             if(res[0].error != 404)
                 setList(res)
@@ -34,6 +42,11 @@ const Calendar = () => {
                 Cookies.remove("token");
                 window.location.href = "/";
             } 
+        })
+        .catch((e)=> {
+            console.log(e)
+            Cookies.remove("token");
+            window.location.href = "/";
         })
       };
 

@@ -18,9 +18,17 @@ function Todo(props) {
   function GetList(type) { 
     fetch('http://10.25.0.5:5454/getList', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'token': Cookies.get("token"), 'type': type}
+      headers: 
+      {
+         'Content-Type': 'application/json', 
+         'token': "Bearer "+Cookies.get("token"),
+         'type': type
+        }
     })
-    .then(res => res.json())
+    .then(res => {
+      if(!res.ok) throw new Error(res.status);
+      else return res.json();
+    })
     .then(res => {
       if(res[0].error != 404) {
         console.log(res);
@@ -33,6 +41,11 @@ function Todo(props) {
         Cookies.remove("token");
         window.location.href = "/";
       } 
+    })
+    .catch((e) => {
+      console.log(e)
+      Cookies.remove("token");
+      window.location.href = "/";
     })
   };
 
@@ -93,9 +106,9 @@ function Todo(props) {
                          )
                      })
                   }
-                </TaskTable>
+              </TaskTable>
           </Col>
-          </Row>
+        </Row>
       </div>
     </>
   );
