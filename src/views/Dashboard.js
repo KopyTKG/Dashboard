@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 
+import Cookies from "js-cookie";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // react plugin used to create charts
@@ -25,11 +26,38 @@ import TicTac from "../variables/TicTac";
 import percentage from "../variables/Temp";
 
 import { CircularProgressbar } from "components/CircleGraf";
+import Spacer from "components/Spacer";
 
 function Dashboard(props) {
   const [table, settable] = useState("sec");
   const [display, setdisplay] = useState("second");
+  const [auth, setAuth] = useState(null);
   
+  const LoadPayload = () => {
+    fetch(
+      process.env.REACT_APP_API_TYPE+
+      process.env.REACT_APP_API_IP+':'+
+      process.env.REACT_APP_API_PORT+
+      '/auth', 
+      {
+      method: 'POST',
+      headers: 
+      {
+         'Content-Type': 'application/json', 
+         'token': "Bearer "+Cookies.get("token")
+        }
+    })
+    .then(res => {
+      if(!res.ok) throw new Error(res.status);
+      else setAuth(true);
+    })
+    .catch((e) => {
+      console.log(e)
+      Cookies.remove("token");
+      window.location.href = "/";
+    })
+  }
+
   let MainTableSettings = {
     maintainAspectRatio: false,
     legend: {
@@ -198,10 +226,7 @@ function Dashboard(props) {
 
   return (
     <>
-    {
-      //OnLoad()
-    }
-      <div className="content">
+      <div className="content" onLoad={LoadPayload()}>
         <Row>
           <Col xs="12">
             <Card className="card-chart">
@@ -282,6 +307,7 @@ function Dashboard(props) {
             </Card>
           </Col>
         </Row>
+        <Spacer/>
         <Row>
         <Col lg="4" md="5">
             <Card className="card-chart">

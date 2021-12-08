@@ -23,7 +23,12 @@ const Calendar = () => {
     const [list, setList] = useState(null);
 
     function OnLoad() { 
-        fetch('http://10.25.0.5:5454/getCalendar', {
+        fetch(
+            process.env.REACT_APP_API_TYPE+
+            process.env.REACT_APP_API_IP+':'+
+            process.env.REACT_APP_API_PORT+
+            '/getCalendar',
+            {
             method: 'POST',
             headers: 
             { 
@@ -68,15 +73,15 @@ const Calendar = () => {
             :
             <>
             <div className="content">
-                <Row>
+                <Row style={{overflowY: "hidden"}} className="rbc-body" >
                     <Col xs="12">
-                        <Card>
+                        <Card style={{height: "100%"}}>
                              <CardHeader>
                                  <label>
                                      Task list
                                  </label>
                              </CardHeader>
-                             <CardBody style={{height: 810}}>
+                             <CardBody style={{height: "100%"}}>
                                 <C
                                 events={list}
                                 step={60}

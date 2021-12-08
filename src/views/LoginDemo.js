@@ -17,7 +17,7 @@ const Login = () => {
                 message = (
                 <div>
                     <div>
-                        <b>Sorry, but you have entered wrong password.</b>
+                        You have entered<b> invalid username or passowrd</b>.
                     </div>
                 </div>
                 )
@@ -42,10 +42,18 @@ const Login = () => {
         };
         notificationAlertRef.current.notificationAlert(options);
       };
-    const OnMount = () => {
+    const ResetPayload = () => {
+        
+    }
+    const SendPayload = () => {
         let username = document.getElementById("username").value;
         let password = document.getElementById("password").value;
-        fetch('http://10.25.0.5:5454/login', {
+        fetch(
+            process.env.REACT_APP_API_TYPE+
+            process.env.REACT_APP_API_IP+':'+
+            process.env.REACT_APP_API_PORT+
+            '/login', 
+            {
             method: 'POST',
             headers: 
             { 
@@ -54,7 +62,19 @@ const Login = () => {
                 'pass': password
             }
         })
-        .then(res => res.json())
+        .then(res => {
+            if(!res.ok){
+                if(res.status == 401) {
+                    notify("pass");
+                    throw new Error(res.status);
+                }
+                else {
+                    notify("conn")
+                    throw new Error(res.status);
+                }
+            }
+            else return res.json();
+        })
         .then(res => {
             console.log(res);
             if(res.success) {
@@ -67,8 +87,9 @@ const Login = () => {
                 document.getElementById("password").value = "";
             }
         })
-        .catch(()=>{
-            notify("conn");
+        .catch((e)=>{
+            console.log(e);
+            //notify("conn");
             document.getElementById("password").value = "";
             /*Cookies.set("token", "ee");
             setTimeout(() => {
@@ -89,12 +110,12 @@ const Login = () => {
                 </div>
                 <div className="bg"/>
                 <div className="b-strip">
-                    <form className="f-log" action="#" onSubmit={() => OnMount()}>
+                    <form className="f-log" action="#" onSubmit={() => SendPayload()}>
                         <label>
-                            Email address
+                            Username
                         </label>
                         <FloatingLabel 
-                           label="test@test.com"
+                           label="Username"
                            inputId="username"
                            type="text"
                            required={true} 
@@ -103,7 +124,7 @@ const Login = () => {
                             Password
                         </label>
                         <FloatingLabel 
-                           label="password"
+                           label="Password"
                            inputId="password"
                            type="password"
                            required={true} 

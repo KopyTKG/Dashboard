@@ -156,8 +156,8 @@
 }
 
 .table-responsive{
-  overflow: scroll;
-  padding-bottom: 10px;
+  overflow-y: scroll;
+  height: 100%;
 }
 
 #tables .table-responsive{

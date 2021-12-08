@@ -16,7 +16,12 @@ function Todo(props) {
   const [list, setList] = useState(null);
 
   function GetList(type) { 
-    fetch('http://10.25.0.5:5454/getList', {
+    fetch(
+      process.env.REACT_APP_API_TYPE+
+      process.env.REACT_APP_API_IP+':'+
+      process.env.REACT_APP_API_PORT+
+      '/getList', 
+      {
       method: 'POST',
       headers: 
       {
