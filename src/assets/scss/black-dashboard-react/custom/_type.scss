@@ -38,8 +38,8 @@ a{
     }
 }
 h1, .h1 {
+    // margin-bottom: $margin-base-vertical * 2;
     line-height: 1.05;
-    margin-bottom: $margin-base-vertical * 2;
 
     small{
         font-weight: $font-weight-bold;
@@ -49,12 +49,12 @@ h1, .h1 {
 
 }
 h2, .h2{
-    margin-bottom: $margin-base-vertical * 2;
+    // margin-bottom: $margin-base-vertical * 2;
     line-height: 1.2;
 
 }
 h3, .h3{
-    margin-bottom: $margin-base-vertical * 2;
+    // margin-bottom: $margin-base-vertical * 2;
     line-height: 1.4em;
 }
 h4, .h4{

@@ -42,20 +42,6 @@ const Login = () => {
         };
         notificationAlertRef.current.notificationAlert(options);
       };
-    const ResetPayload = () => {
-        fetch(
-            process.env.REACT_APP_API_TYPE    +
-            process.env.REACT_APP_API_IP + ":"+
-            process.env.REACT_APP_API_PORT    +
-            '/reset' ,
-            {
-                method: 'POST' ,
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-        )
-    }
     const SendPayload = () => {
         let username = document.getElementById("username").value;
         let password = document.getElementById("password").value;
@@ -102,18 +88,14 @@ const Login = () => {
             console.log(e);
             //notify("conn");
             document.getElementById("password").value = "";
-            /*Cookies.set("token", "ee");
-            setTimeout(() => {
-                window.location.href = "/user";
-            }, 500);*/
         })
         
     }
     return(
         <>
             {
-                window.location.href.split("/")[3] != "?#" ? window.location.href = "/?#"
-                : null
+                // window.location.href.split("/")[3] != "?#" ? window.location.href = "/?#"
+                // : null
             }
             <div className="body">
                 <div className="react-notification-alert-container">
@@ -122,18 +104,18 @@ const Login = () => {
                 <div className="bg"/>
                 <div className="b-strip">
                     <form className="f-log" action="#" onSubmit={() => SendPayload()}>
-                        <label>
-                            Username
-                        </label>
+                        <center>
+                            <h3>
+                                Login
+                            </h3>
+                        </center>
                         <FloatingLabel 
                            label="Username"
                            inputId="username"
                            type="text"
                            required={true} 
                         />
-                        <label>
-                            Password
-                        </label>
+                        <label/>
                         <FloatingLabel 
                            label="Password"
                            inputId="password"
@@ -145,10 +127,10 @@ const Login = () => {
                         </button>
                         <br></br>
                         <br></br>
-                        {/* <a href="/settings/password"> */}
-                        <button onClick={() => ResetPayload()}>
+                        {/* <a > */}
+                        <a href="/reset/login">
                         forgot password?
-                        </button>
+                        </a>
                         {/* </a> */}
                     </form>
                 </div>

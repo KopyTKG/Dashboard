@@ -9,7 +9,7 @@ import {
 
 import AdminLayout from "layouts/Admin/Admin.js";
 import UserLayout from "layouts/Common/User.js";
-import Login from "views/LoginDemo";
+import Login from "views/Login";
 
 import "assets/css/default.scss";
 import "assets/scss/black-dashboard-react.scss";
@@ -22,6 +22,7 @@ import BackgroundColorWrapper from "./components/BackgroundColorWrapper/Backgrou
 
 
 import Cookies from "js-cookie";
+import Reset from "views/Reset";
 
 const Logout =() =>{
   Cookies.remove("token");
@@ -44,8 +45,14 @@ ReactDOM.render(
           </>          
           :
           <>            
-            <Route path="/">
+            <Route path="/login">
               <Login/>
+            </Route>
+            <Route path="/reset/login">
+              <Reset/>
+            </Route>
+            <Route exact path="/">
+              <Redirect form="/" to="/login"/>
             </Route>
             {/* <Route exact path="/settings/password">
               {alert("reset")}
