@@ -43,9 +43,14 @@ ReactDOM.render(
           </Route>
           </>          
           :
+          <>            
             <Route path="/">
               <Login/>
             </Route>
+            {/* <Route exact path="/settings/password">
+              {alert("reset")}
+            </Route> */}
+          </>
           }
         </Switch>
       </BrowserRouter>

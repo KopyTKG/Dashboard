@@ -43,7 +43,18 @@ const Login = () => {
         notificationAlertRef.current.notificationAlert(options);
       };
     const ResetPayload = () => {
-        
+        fetch(
+            process.env.REACT_APP_API_TYPE    +
+            process.env.REACT_APP_API_IP + ":"+
+            process.env.REACT_APP_API_PORT    +
+            '/reset' ,
+            {
+                method: 'POST' ,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        )
     }
     const SendPayload = () => {
         let username = document.getElementById("username").value;
@@ -134,9 +145,11 @@ const Login = () => {
                         </button>
                         <br></br>
                         <br></br>
-                        <a href="/settings/password">
+                        {/* <a href="/settings/password"> */}
+                        <button onClick={() => ResetPayload()}>
                         forgot password?
-                        </a>
+                        </button>
+                        {/* </a> */}
                     </form>
                 </div>
             </div>
