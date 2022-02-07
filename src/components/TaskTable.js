@@ -18,7 +18,7 @@ const spanStyle = {stroke: "black", color: "black"};
 class TaskCard extends React.Component{
     render(){
         return(
-            <Card className="" style={{overflowY: "hidden"}} className="rbc-body card-tasks" >
+            <Card style={{overflowY: "hidden"}} className="rbc-body card-tasks" >
               <CardHeader>
                 <h6 className="title d-inline">{this.props.title}</h6>
                 <p className="card-category d-inline">{this.props.subtitle}</p>

@@ -2,7 +2,7 @@ import {useRef} from "react";
 import NotificationAlert from "react-notification-alert";
 
 import FloatingLabel from "components/FloatingLabel/FloatingLabel";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 import "../assets/css/default.scss";
 
 import "../components/FloatingLabel/FloatingLabel.css"
@@ -14,6 +14,7 @@ const Reset = () => {
         let message;
         let clr = "danger";
         switch(color) {
+            default: break;
             case "green":
                 clr = "success";
                 break;
@@ -22,6 +23,7 @@ const Reset = () => {
                 break;
         }
         switch(type) {
+            default: break;
             case "ok":
                 message = (
                 <div>

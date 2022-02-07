@@ -50,9 +50,9 @@ function Dashboard(props) {
     .then(res => {
       if(!res.ok) throw new Error(res.status);
       else setAuth(true);
+      return auth;
     })
     .catch((e) => {
-      console.log(e)
       Cookies.remove("token");
       window.location.href = "/";
     })
@@ -219,7 +219,7 @@ function Dashboard(props) {
       };
       dump["labels"] = data["labels"]
       dump["datasets"][0]["data"] = data["temps"]
-      console.log(dump["datasets"][0]["data"])
+      // console.log(dump["datasets"][0]["data"])
       return dump;
     }
   };
@@ -399,7 +399,7 @@ function Dashboard(props) {
                         value={100}
                         text={"Ghost"}
                         styles={
-                          TicTac == "online" ?
+                          TicTac === "online" ?
                           {
                             path:{stroke:"limegreen", strokeLinecap: "round"},
                             text:{fill: "white", fontSize: "18px", dominantBaseline:"middle", textAnchor: "middle"}

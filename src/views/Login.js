@@ -13,6 +13,7 @@ const Login = () => {
     const notify = (type) => {
         let message;
         switch(type) {
+            default: break;
             case "pass":
                 message = (
                 <div>
@@ -61,7 +62,7 @@ const Login = () => {
         })
         .then(res => {
             if(!res.ok){
-                if(res.status == 401) {
+                if(res.status === 401) {
                     notify("pass");
                     throw new Error(res.status);
                 }

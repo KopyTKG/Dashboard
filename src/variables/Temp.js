@@ -1,1 +1,2 @@
-export default "55.9";
+let dump = "55.9";
+export default dump;

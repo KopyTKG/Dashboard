@@ -8,8 +8,7 @@ import
     Col,
     CardHeader,
     CardBody,
-    Card,
-    NavbarText
+    Card
 }
 from "reactstrap";
 
@@ -41,15 +40,23 @@ const Calendar = () => {
             else return res.json();
         })
         .then(res => {
-            if(res[0].error != 404)
-                setList(res)
+            if(res[0].error !== 404)
+            {
+                let tasks = [];
+                res.forEach(el => {
+                    let tmp = el;
+                    tmp["start"] = new Date(el["start"]);
+                    tmp["end"] = new Date(el["end"]);
+                    tasks.push(tmp)
+                });
+                setList(tasks)
+            }
             else {
                 Cookies.remove("token");
                 window.location.href = "/";
             } 
         })
         .catch((e)=> {
-            console.log(e)
             Cookies.remove("token");
             window.location.href = "/";
         })

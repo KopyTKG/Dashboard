@@ -35,8 +35,8 @@ function Todo(props) {
       else return res.json();
     })
     .then(res => {
-      if(res[0].error != 404) {
-        console.log(res);
+      if(res[0].error !== 404) {
+        // console.log(res);
         setTimeout(() => 
         {
           setList(res);
@@ -48,7 +48,7 @@ function Todo(props) {
       } 
     })
     .catch((e) => {
-      console.log(e)
+      // console.log(e)
       Cookies.remove("token");
       window.location.href = "/";
     })
